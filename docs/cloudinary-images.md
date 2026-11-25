@@ -20,6 +20,7 @@ The site can serve image files from `public/` through Cloudinary. The original f
    ```
 
 The uploader stores files under public IDs matching their paths relative to `public/` (without file extensions). It is safe to rerun: the same public IDs are overwritten. The script uploads supported image formats only and stops with an error if an upload fails.
+The API key must have permission to create/upload assets; a `403` mentioning missing `create` permission means the credentials need a role or account with upload access.
 
 To check the asset count and detect public-ID collisions without uploading, run `npm run cloudinary:upload-public-images -- --dry-run`.
 
