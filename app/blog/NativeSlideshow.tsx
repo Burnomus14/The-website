@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '../components/CloudinaryImage';
 import './NativeSlideshow.css';
 import { useEffect, useRef, useState } from 'react';
 

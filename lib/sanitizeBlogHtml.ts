@@ -3,6 +3,7 @@ import sanitizeHtml from 'sanitize-html';
 import { iconTags, iconAttributes, filterIconAttributes } from './calloutSvg';
 import { optimizedBlogImageAttributes, LEADING_IMAGE_TEXT_LIMIT } from './blogImages';
 import { safeContentHref, safeEmbedHref, embedTitle } from './contentUrls';
+import { getPublicImageUrl } from './cloudinary-assets';
 /** Normalize rich content before SSR, preserving permitted media and layout. */
 export function sanitizeBlogHtml(html: string, { prioritizeLeadingImage = true }: { prioritizeLeadingImage?: boolean } = {}): string {
   const ids = new Set<string>();
@@ -50,8 +51,10 @@ export function sanitizeBlogHtml(html: string, { prioritizeLeadingImage = true }
         for (const key of ['data-src', 'data-iframe-src']) if (a[key]) a[key] = safeEmbedHref(a[key]);
       }
       if (tagName === 'img') {
-        a.src = safeContentHref(a.src || '', true);
-        if (a['data-full']) a['data-full'] = safeContentHref(a['data-full'], true);
+        const safeSrc = safeContentHref(a.src || '', true);
+        a.src = getPublicImageUrl(safeSrc);
+        const cloudinaryAsset = a.src !== safeSrc;
+        if (a['data-full']) a['data-full'] = getPublicImageUrl(safeContentHref(a['data-full'], true));
         // Never forward arbitrary srcset candidates from CMS HTML. Generate our own
         // for supported sources; leave galleries to their dedicated renderer.
         delete a.srcset;
@@ -64,6 +67,7 @@ export function sanitizeBlogHtml(html: string, { prioritizeLeadingImage = true }
           const full = a['data-full'];
           Object.assign(a, optimizedBlogImageAttributes(a.src));
           if (full) a['data-full'] = full;
+          else if (cloudinaryAsset) a['data-full'] = a.src;
         }
         if (a.src) precedingMedia = true;
         a.alt = a.alt || '';
@@ -77,7 +81,7 @@ export function sanitizeBlogHtml(html: string, { prioritizeLeadingImage = true }
       }
       if (['audio', 'video', 'source', 'track'].includes(tagName)) {
         if (a.src) a.src = safeContentHref(a.src, true);
-        if (a.poster) a.poster = safeContentHref(a.poster, true);
+        if (a.poster) a.poster = getPublicImageUrl(safeContentHref(a.poster, true));
         if (tagName === 'audio' || tagName === 'video') { a.preload = 'metadata'; a.controls = ''; }
       }
       return { tagName, attribs: a };

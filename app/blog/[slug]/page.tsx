@@ -2,7 +2,7 @@ import { canonicalContentHref } from '../../../lib/contentUrls';
 import { extractPostSections } from '../../../lib/fmpSections';
 import type { Metadata } from "next";
 import { cache, Suspense } from "react";
-import Image from "next/image";
+import Image from "../../components/CloudinaryImage";
 import { fetchBlogPostBySlug, fetchBlogPostFeaturedImage, type BlogPost } from "../../../lib/blog";
 import { notFound } from "next/navigation";
 import LightboxClient from "../../components/LightboxClient";

@@ -12,6 +12,7 @@ import Navigation from './components/Navigation';
 import type { Metadata } from 'next';
 import { getSiteContext } from '../lib/siteEdition';
 import { Google_Sans_Code } from 'next/font/google';
+import { getPublicImageUrl } from '../lib/cloudinary-assets';
 
 const googleSansCode = Google_Sans_Code({
   subsets: ['latin'],
@@ -24,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const site = await getSiteContext();
   const siteUrl = site.canonicalOrigin;
   const isCollege = site.edition === 'college';
-  const favicon = site.environment === 'production' ? '/favicon.ico' : `/favicon-${site.environment}.ico`;
+  const favicon = getPublicImageUrl(site.environment === 'production' ? '/favicon.ico' : `/favicon-${site.environment}.ico`);
   const title = isCollege ? 'College Portfolio | That Josh Guy' : 'That Josh Guy';
   const description = isCollege
     ? 'Onesmus Schngor’s college portfolio, featuring game development projects, process work, and development blogs.'
@@ -44,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       images: [
         {
-          url: '/images/preview.png',
+          url: getPublicImageUrl('/images/preview.png'),
           width: 1200,
           height: 630,
           alt: 'That Josh Guy Portfolio Preview'
@@ -57,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: '@thatjoshguy',
       title,
       description,
-      images: ['/images/preview.png']
+      images: [getPublicImageUrl('/images/preview.png')]
     },
     icons: {
       icon: favicon

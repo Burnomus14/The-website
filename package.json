@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "typecheck:tooling": "tsc --noEmit -p tsconfig.tooling.json",
     "test:browser": "playwright test",
+    "cloudinary:upload-public-images": "node --env-file-if-exists=.env.local scripts/upload-public-images.mjs",
     "studio": "cd sanity && sanity dev",
     "studio:validate": "cd sanity && sanity schema validate",
     "test:schemas": "tsx scripts/validate-schemas.ts"

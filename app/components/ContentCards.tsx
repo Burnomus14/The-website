@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from './CloudinaryImage';
 import Link from 'next/link';
 import type { ComponentProps } from 'react';
 import { Download } from '@thatjoshguy/oneui-icons';

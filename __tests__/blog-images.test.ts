@@ -1,6 +1,15 @@
 import { sanitizeBlogHtml } from '../lib/sanitizeBlogHtml';
 import { optimizedBlogImageAttributes } from '../lib/blogImages';
 
+const originalCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+beforeEach(() => {
+  delete process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+});
+afterAll(() => {
+  if (originalCloudName === undefined) delete process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  else process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = originalCloudName;
+});
+
 const imageTags = (html: string) => html.match(/<img\b[^>]*>/g) || [];
 
 it('optimizes a leading article image and preserves the full-resolution source', () => {
@@ -57,6 +66,20 @@ it('discards supplied responsive URLs and unsafe originals while retaining safe 
 it('keeps later rich-text fragments lazy when the enclosing article has preceding media', () => {
   const [image] = imageTags(sanitizeBlogHtml('<img src="/images/projects/oneui-bento.png">', { prioritizeLeadingImage: false }));
   expect(image).toContain('loading="lazy"');
+});
+
+it('serves repository images directly from Cloudinary when configured', () => {
+  const originalCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = 'test-cloud';
+  try {
+    const [image] = imageTags(sanitizeBlogHtml('<img src="/images/projects/oneui-bento.png">'));
+    expect(image).toContain('src="https://res.cloudinary.com/test-cloud/image/upload/images/projects/oneui-bento.png"');
+    expect(image).toContain('data-full="https://res.cloudinary.com/test-cloud/image/upload/images/projects/oneui-bento.png"');
+    expect(image).not.toContain('/_next/image');
+  } finally {
+    if (originalCloudName === undefined) delete process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    else process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = originalCloudName;
+  }
 });
 
  it('serves uploaded Sanity images directly in legacy HTML without losing captions or loading behavior', () => {

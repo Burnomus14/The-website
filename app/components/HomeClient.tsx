@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "./CloudinaryImage";
 import Link from "next/link";
 import { Game, Location } from '@thatjoshguy/oneui-icons';
 import Footer from "./Footer";

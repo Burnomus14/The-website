@@ -13,7 +13,7 @@ function canOptimize(src: string): boolean {
     if (url.protocol !== 'https:' || url.port || url.username || url.password) return false;
     // Sanity already resizes and encodes these images on its CDN. Avoid a
     // second optimizer, which can fail independently when Vercel usage is capped.
-    if (url.hostname === 'cdn.sanity.io') return false;
+    if (url.hostname === 'cdn.sanity.io' || url.hostname === 'res.cloudinary.com') return false;
     if (/\.(?:svg|gif)$/i.test(url.pathname)) return false;
     return remotePatterns.some(pattern => {
       const hostnameMatches = pattern.hostname.startsWith('*.')

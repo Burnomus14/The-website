@@ -1,6 +1,6 @@
 "use client";
 import { localPreferences } from '../../../lib/browserStorage';
-import Image from "next/image";
+import Image from "../../components/CloudinaryImage";
 import "../../globals.css";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, Suspense } from "react";

@@ -13,6 +13,7 @@ const flagsDefinitionsAlias = getOptionalFlagsDefinitionsAlias();
 const turbopackFlagsDefinitionsAlias = flagsDefinitionsAlias
   ? './lib/vercelFlagsDefinitionsStub.mjs'
   : null;
+const cloudinaryCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME?.trim();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -27,7 +28,16 @@ const nextConfig = {
   },
   images: {
     qualities: [75, 90],
-    remotePatterns: require('./lib/imageRemotePatterns.json'),
+    remotePatterns: [
+      ...require('./lib/imageRemotePatterns.json'),
+      ...(cloudinaryCloudName
+        ? [{
+            protocol: 'https',
+            hostname: 'res.cloudinary.com',
+            pathname: `/${cloudinaryCloudName}/image/upload/**`,
+          }]
+        : []),
+    ],
   },
   redirects: async () => [
     {

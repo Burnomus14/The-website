@@ -1,7 +1,7 @@
 import { calloutHtml } from '../../lib/callout';
 import { uniqueHeadingId } from '../../lib/headings';
 import { safeContentHref } from '../../lib/contentUrls';
-import Image from 'next/image';
+import Image from '../components/CloudinaryImage';
 import { BLOG_IMAGE_SIZES, LEADING_IMAGE_TEXT_LIMIT } from '../../lib/blogImages';
 import type React from 'react';
 import { getEmbedHtmlForKey, processContentWithEmbeds } from '../../lib/blogContentProcessing';

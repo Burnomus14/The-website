@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "./CloudinaryImage";
 import { Education } from "@thatjoshguy/oneui-icons";
 import { useLayoutEffect } from "react";
 import HomeMesh from "./HomeMesh";
