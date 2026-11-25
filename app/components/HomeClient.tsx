@@ -716,15 +716,15 @@ export default function HomeClient({
         <aside className="about-aside" aria-label="Profile details">
           <figure className="about-portrait">
             <Image
-              src="/images/home/about/london.jpg"
-              alt="Onesmus Schngor beside the River Thames in London, with Tower Bridge behind him"
+              src="/images/home/about/profile.png"
+              alt="Onesmus Schngor seated at a table with his hands together"
               fill
               sizes="(max-width: 699px) calc(100vw - 40px), 414px"
               className="about-portrait-image"
             />
             <figcaption className="about-location">
               <Location size={28} color="currentColor" />
-              <span>London</span>
+              <span>Nairobi</span>
             </figcaption>
           </figure>
 
