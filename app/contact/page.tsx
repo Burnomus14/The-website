@@ -60,7 +60,7 @@ export default function Contact() {
                   <h2 className="title">Hit me up</h2>
                 </div>
                 <div className="list-group">
-                  <a href="https://x.com/thatjoshguy" className="list" target="_blank" rel="noopener noreferrer">
+                  <a href="https://x.com/___sachngor" className="list" target="_blank" rel="noopener noreferrer">
                     <div className="list-item-icon">
                       {/* Twitter SVG */}
                       <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@ export default function Contact() {
                     <div className="list-item-content">
                       <div className="body-text">Twitter</div>
                       <div className="information-wrapper">
-                        <div className="information">@thatjoshguy</div>
+                        <div className="information">@___sachngor</div>
                       </div>
                     </div>
                     <div className="list-item-chevron">
@@ -81,7 +81,12 @@ export default function Contact() {
                       </svg>
                     </div>
                   </a>
-                  <a href="mailto:email@thatjoshguy.me" className="list">
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=sachngor14%40gmail.com"
+                    className="list"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <div className="list-item-icon">
                       {/* Email SVG */}
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +96,7 @@ export default function Contact() {
                     <div className="list-item-content">
                       <div className="body-text">Email</div>
                       <div className="information-wrapper">
-                        <div className="information">email@thatjoshguy.me</div>
+                        <div className="information">sachngor14@gmail.com</div>
                       </div>
                     </div>
                     <div className="list-item-chevron">
@@ -102,7 +107,7 @@ export default function Contact() {
                       </svg>
                     </div>
                   </a>
-                  <ContactLink href="https://discord.gg/dRhJ78YH6M" label="Discord" detail="Join the TJG Discord server" icon={Discord} />
+                  <ContactLink href="https://discord.com/users/1497973667064184895" label="Discord" detail="Discord profile" icon={Discord} />
                 </div>
               </div>
             </div>
@@ -112,7 +117,7 @@ export default function Contact() {
                   <h2 className="title">My socials</h2>
                 </div>
                 <div className="list-group">
-                  <a href="https://bsky.app/profile/thatjoshguy.me/" className="list" target="_blank" rel="noopener noreferrer">
+                  <div className="list">
                     <div className="list-item-icon">
                       {/* Bluesky SVG */}
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 10.6473C10.9133 8.26964 7.95386 3.83863 5.20231 1.6533C2.56647 -0.440125 1.56093 -0.0774049 0.901733 0.257696C0.138729 0.645566 0 1.96339 0 2.73873C0 3.51406 0.377832 9.09539 0.624277 10.027C1.43857 13.1053 4.33735 14.1455 7.00693 13.8117C7.14339 13.7889 7.28179 13.7679 7.42193 13.7484C7.28446 13.7731 7.14599 13.7943 7.00693 13.8117C3.09469 14.4635 -0.379747 16.0675 4.17721 21.7747C9.18986 27.6135 11.047 20.5228 12 16.9276C12.953 20.5228 14.0507 27.3578 19.733 21.7747C24 16.9276 20.9053 14.4637 16.9931 13.8118C16.854 13.7944 16.7155 13.7734 16.5781 13.7486C16.7182 13.768 16.8566 13.7891 16.9931 13.8118C19.6626 14.1457 22.5614 13.1055 23.3757 10.0273C23.6222 9.09562 24 3.51426 24 2.73892C24 1.96358 23.8612 0.645759 23.0982 0.257888C22.439 -0.0772114 21.4335 -0.439931 18.7977 1.65349C16.0461 3.83882 13.0867 8.26964 12 10.6473Z" fill="var(--accent)"/></svg>
@@ -120,18 +125,11 @@ export default function Contact() {
                     <div className="list-item-content">
                       <div className="body-text">Bluesky</div>
                       <div className="information-wrapper">
-                        <div className="information">thatjoshguy.me</div>
+                        <div className="information"></div>
                       </div>
                     </div>
-                    <div className="list-item-chevron">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Shape">
-                          <path id="Vector 3" d="M8.80005 20L15.3858 13.4142C16.1669 12.6332 16.1669 11.3668 15.3858 10.5858L8.80005 4" stroke="#ACACB1" strokeWidth="2" strokeLinecap="round"/>
-                        </g>
-                      </svg>
-                    </div>
-                  </a>
-                  <a href="https://instagram.com/thatjoshguy69/" className="list" target="_blank" rel="noopener noreferrer">
+                  </div>
+                  <a href="https://www.instagram.com/burnomus14/" className="list" target="_blank" rel="noopener noreferrer">
                     <div className="list-item-icon">
                       {/* Instagram SVG */}
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +138,7 @@ export default function Contact() {
                     <div className="list-item-content">
                       <div className="body-text">Instagram</div>
                       <div className="information-wrapper">
-                        <div className="information">thatjoshguy69</div>
+                        <div className="information">@burnomus14</div>
                       </div>
                     </div>
                     <div className="list-item-chevron">
@@ -151,7 +149,7 @@ export default function Contact() {
                       </svg>
                     </div>
                   </a>
-                  <a href="https://youtube.com/@thatjoshguy08/" className="list" target="_blank" rel="noopener noreferrer">
+                  <div className="list">
                     <div className="list-item-icon">
                       {/* YouTube SVG */}
                       <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,18 +159,11 @@ export default function Contact() {
                     <div className="list-item-content">
                       <div className="body-text">YouTube</div>
                       <div className="information-wrapper">
-                        <div className="information">thatjoshguy08</div>
+                        <div className="information"></div>
                       </div>
                     </div>
-                    <div className="list-item-chevron">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Shape">
-                          <path id="Vector 3" d="M8.80005 20L15.3858 13.4142C16.1669 12.6332 16.1669 11.3668 15.3858 10.5858L8.80005 4" stroke="#ACACB1" strokeWidth="2" strokeLinecap="round"/>
-                        </g>
-                      </svg>
-                    </div>
-                  </a>
-                  <ContactLink href="https://t.me/ThatJoshGuy" label="Telegram" detail="@ThatJoshGuy" icon={Telegram} />
+                  </div>
+                  <ContactLink href="https://t.me/schngor" label="Telegram" detail="@schngor" icon={Telegram} />
                 </div>
               </div>
             </div>

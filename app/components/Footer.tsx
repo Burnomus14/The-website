@@ -3,22 +3,22 @@ import Image from "next/image";
 const socialLinks = [
   {
     label: "Email",
-    href: "mailto:email@thatjoshguy.me",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=sachngor14%40gmail.com",
     icon: "/images/footer/email.png",
   },
   {
     label: "Telegram",
-    href: "https://t.me/ThatJoshGuy",
+    href: "https://t.me/schngor",
     icon: "/images/footer/telegram.png",
   },
   {
     label: "Discord",
-    href: "https://discord.gg/dRhJ78YH6M",
+    href: "https://discord.com/users/1497973667064184895",
     icon: "/images/footer/discord.png",
   },
   {
     label: "X",
-    href: "https://x.com/thatjoshguy",
+    href: "https://x.com/___sachngor",
     icon: "/images/footer/x.png",
   },
 ] as const;

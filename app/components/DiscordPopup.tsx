@@ -3,7 +3,7 @@ import { localPreferences } from '../../lib/browserStorage';
 import { useEffect, useState, useCallback } from "react";
 
 const STORAGE_KEY = "discordPopupDismissed";
-const DISCORD_URL = "https://discord.gg/dRhJ78YH6M";
+const DISCORD_URL = "https://discord.com/users/1497973667064184895";
 // Keep this secondary prompt outside the critical first-load window. Showing it
 // while the page is settling creates a late visual update and interrupts readers.
 const SHOW_DELAY = 10000;
@@ -42,7 +42,7 @@ export default function DiscordPopup() {
     <div
       className={`discord-banner ${visible ? "discord-banner-visible" : ""}`}
       role="region"
-      aria-label="Join the TJG Discord server"
+      aria-label="View Discord profile"
     >
       <div className="discord-banner-icon">
         <svg width="28" height="28" viewBox="0 0 127.14 96.36" fill="currentColor">
@@ -50,7 +50,7 @@ export default function DiscordPopup() {
         </svg>
       </div>
 
-      <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" onClick={() => dismiss()} className="discord-banner-text">Join the TJG Discord server</a>
+      <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" onClick={() => dismiss()} className="discord-banner-text">View Discord profile</a>
 
       <button
         className="discord-banner-close"
