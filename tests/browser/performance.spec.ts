@@ -74,6 +74,8 @@ test('streamed cards hydrate cleanly with corner smoothing enabled', async ({ pa
   });
   await page.goto('/');
   await expect(page.locator('.home-facts-list li')).toHaveCount(3);
+  await expect(page.locator('.home-fact-item').filter({ hasText: 'Current phone' })).toContainText('Galaxy S24 Ultra');
+  await expect(page.locator('.home-fact-item').filter({ hasText: 'Favourite video game' })).toContainText('PUBG Mobile');
   await expect(page.locator('.design-projects-section [data-no-smooth-corners]').first()).toBeAttached();
   expect(errors).toEqual([]);
   await page.unrouteAll({ behavior: 'wait' });
@@ -119,6 +121,8 @@ test('streamed homepage still supports section links and mobile layout', async (
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#about');
   await expect(page.locator('#about')).toBeInViewport();
+  await expect(page.locator('.about-copy')).toContainText("I'm Onesmus. I have always had an interest in technology, computers, programming, and design.");
+  await expect(page.locator('.about-copy')).toContainText('My archive is a living sandbox of web applications');
   await expect(page.locator('.home-facts-list li')).toHaveCount(3);
   await expect(page.locator('.hero-name')).toHaveCSS('opacity', '1');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);

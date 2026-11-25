@@ -9,8 +9,8 @@ export interface ProfileFact {
 }
 
 export const DEFAULT_PROFILE_FACTS: ProfileFact[] = [
-  { label: "Current phone", value: "Galaxy Z Fold8", icon: "phone" },
-  { label: "Favourite video game", value: "Persona 3 Reload", icon: "game" },
+  { label: "Current phone", value: "Galaxy S24 Ultra", icon: "phone" },
+  { label: "Favourite video game", value: "PUBG Mobile", icon: "game" },
   { label: "Favourite Formula 1 driver", value: "Lewis Hamilton", icon: "f1" },
 ];
 

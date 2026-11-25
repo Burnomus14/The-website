@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Location } from '@thatjoshguy/oneui-icons';
+import { Game, Location } from '@thatjoshguy/oneui-icons';
 import Footer from "./Footer";
 import { CarouselContentCard } from "./ContentCards";
 import { CSSProperties, ReactElement, ReactNode, RefObject, Suspense, lazy, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
@@ -671,22 +671,13 @@ export default function HomeClient({
         <div className="about-copy">
           <h2 className="about-headline">Hey,</h2>
           <p className="about-text">
-            I&apos;m Onesmus Schngor, a designer, journalist and lifelong Samsung enthusiast based in the south of the UK. I follow everything Samsung, from their software updates, UX design, to even hardware leaks.
+            I&apos;m Onesmus. I have always had an interest in technology, computers, programming, and design. As a kid, I used to play games, but as I grew up, I tried to make my own!
           </p>
           <p className="about-text">
-            I work with <a href="https://sammyguru.com/author/josh_skinner/" target="_blank" rel="noopener noreferrer">SammyGuru</a>, and contribute to publications like <a href="https://9to5google.com/" target="_blank" rel="noopener noreferrer">9to5Google</a>, <a href="https://www.sammobile.com/" target="_blank" rel="noopener noreferrer">SamMobile</a> and <a href="https://www.androidauthority.com/" target="_blank" rel="noopener noreferrer">Android Authority</a>.
+            Other than that, I do video editing and programming in my free time. In the past, I have made games, small software projects, and countless websites which I didn&apos;t publish online, either because they were personal or just experiments.
           </p>
           <p className="about-text">
-            I&apos;ve recreated One UI&apos;s design system in Figma with the <Link href="/blog/oneui-design-kit">One UI Design Kit</Link>, letting enthusiasts and developers create native looking interfaces.
-          </p>
-          <p className="about-text">
-            In early 2026, I leaked animations on how the <a href="https://sammyguru.com/galaxy-s26-ultra-privacy-display-animation/" target="_blank" rel="noopener noreferrer">Galaxy S26 Ultra&apos;s Privacy Display</a> worked, showed off <a href="https://sammyguru.com/exclusive-samsung-internet-gets-massive-redesign-in-one-ui-8-0/" target="_blank" rel="noopener noreferrer">Samsung Internet&apos;s redesign</a> in Nov 2025, and was first to share the update artwork for <a href="https://x.com/thatjoshguy" target="_blank" rel="noopener noreferrer">One UI 9.5</a>.
-          </p>
-          <p className="about-text">
-            I also review the latest and greatest Samsung tech for <a href="https://sammyguru.com/author/josh_skinner/" target="_blank" rel="noopener noreferrer">SammyGuru</a>, and dig through Samsung&apos;s applications for signs of unreleased hardware and new features.
-          </p>
-          <p className="about-text">
-            I also overhauled <a href="https://sammyguru.com/" target="_blank" rel="noopener noreferrer">SammyGuru&apos;s brand identity</a>, bringing a cohesive colour system with a new logo and social media branding.
+            My archive is a living sandbox of web applications, Android software, PC setups, and custom system configurations, some actively running in production and others sleeping quietly, awaiting their next iteration.
           </p>
         </div>
 
@@ -711,7 +702,7 @@ export default function HomeClient({
                 <span className={`home-fact-icon home-fact-icon-${fact.icon}`} aria-hidden="true">
                   {fact.icon === "phone" && <FoldIcon size={24} color="currentColor" />}
                   {fact.icon === "game" && (
-                    <Image src="/images/home/about/persona-3-reload.png" alt="" width={24} height={29} />
+                    <Game size={24} color="currentColor" aria-hidden="true" />
                   )}
                   {fact.icon === "f1" && (
                     <Image src="/images/home/about/lewis-hamilton.svg" alt="" width={28} height={16} />
