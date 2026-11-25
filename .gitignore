@@ -1,0 +1,17 @@
+node_modules
+.next
+.vercel
+.env*.local
+
+# TypeScript build artifacts
+*.tsbuildinfo
+
+# Claude Code local worktree sandboxes (not for sharing)
+.claude/worktrees/
+.env*
+
+!.env.example
+/test-results/
+/playwright-report/
+/sanity/.sanity/
+/sanity/dist/

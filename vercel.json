@@ -1,0 +1,43 @@
+{
+  "cleanUrls": true,
+  "git": {
+    "deploymentEnabled": {
+      "legacy": false,
+      "college": false
+    }
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "discord.thatjoshguy.me"
+        }
+      ],
+      "destination": "https://tjg.gg/discord",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "discord.thatjoshguy.me"
+        }
+      ],
+      "destination": "https://tjg.gg/discord",
+      "permanent": true
+    },
+    {
+      "source": "/discord",
+      "destination": "https://discord.gg/dRhJ78YH6M",
+      "permanent": false
+    },
+    {
+      "source": "/oneui",
+      "destination": "https://www.figma.com/community/file/1456035621603784201/one-ui-design-kit",
+      "permanent": false
+    }
+  ]
+}
