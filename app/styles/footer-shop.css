@@ -43,11 +43,10 @@
   align-items: flex-start;
   gap: 10px;
 }
-.footer-brand {
+.footer-brand-placeholder {
   display: block;
   width: 60px;
   height: 60px;
-  object-fit: contain;
 }
 .footer-contact-block {
   position: absolute;
@@ -295,19 +294,11 @@ a.footer-social-link:any-link {
   transform: translateY(0) scale(0.96);
 }
 
-html[data-theme="dark"] .footer-brand {
-  filter: invert(1);
-}
-
 html[data-theme="dark"] .site-footer {
   background: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .footer-brand {
-    filter: invert(1);
-  }
-
   html:not([data-theme="light"]) .site-footer {
     background: transparent;
   }
@@ -338,11 +329,6 @@ html[data-theme="dark"] .site-footer {
     top: 32px;
     left: 20px;
     gap: 12px;
-  }
-
-  .footer-brand {
-    width: 60px;
-    height: 60px;
   }
 
   .footer-copyright {

@@ -15,17 +15,29 @@ Example entry:
   "description": "A short description of what it does.",
   "thumbnail": "https://your-image-host.example/project.png",
   "icon": "https://your-image-host.example/icon.png",
+  "tags": ["Android", "Audio"],
   "bodyUrl": "https://example.com/project",
-  "actionUrl": "https://example.com/project/download",
+  "links": [
+    { "label": "Download portal", "url": "https://example.com/download", "primary": true },
+    { "label": "Get the app", "url": "https://example.com/app" }
+  ],
   "tone": "dark",
   "action": "link",
   "actionIcon": "download"
 }
 ```
 
-`title` and `thumbnail` are required. A link card also needs `actionUrl`,
-`bodyUrl`, or legacy `url` (in that priority). Description defaults to empty;
-legacy `tag` is accepted as its fallback. `icon` and `bodyUrl` are optional.
+`title` and `thumbnail` are required. A link card needs `actionUrl`, `bodyUrl`,
+legacy `url`, or at least one valid entry in `links`. Description defaults to
+empty; legacy `tag` is accepted as its fallback. `icon`, `bodyUrl`, and `tags`
+are optional. `tags` is an array of strings shown as compact chips.
+
+`links` is an optional array of labeled links with `label`, `url`, and an
+optional `primary` boolean. When present, these render as labeled buttons in
+place of the card's single icon action. The card body can still link to the
+project repository through `bodyUrl`. Link URLs are validated with the same
+safe content URL rules as other project destinations.
+
 `tone` is `light` or `dark` (default). `action` is `link` (default) or
 `copy-current-url`, which needs no destination. `actionIcon` is `download`,
 `open` (default for links) or `link` (default for copy). New entries need no ID.
@@ -43,6 +55,8 @@ updates to already-open tabs. The local four-card list is only an offline/outage
 fallback when the connection or entire configuration is unavailable. Invalid or
 disabled entries are skipped; valid entries aren't merged with local defaults.
 
-On 6 September 2026 the four redesigned cards (Twidget, Blur widget demo, One UI
-Design Kit, This website) were copied into Edge Config. The older WhatsApp You,
-YouTube Music Redesign and Better Twitter concepts remain there, disabled.
+The checked-in fallback now orders its cards as The Collection, Equalizer314
+Setup, Farm Machinery Infographics, and This website. Farm Machinery links to
+its Lovable preview. The deployed Edge Config list remains authoritative, so
+apply matching edits to its `projects` key separately. Preserve disabled
+entries when reordering the visible cards.

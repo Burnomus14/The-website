@@ -29,13 +29,7 @@ export default function Footer() {
       <div className="footer-divider" aria-hidden="true" />
 
       <div className="footer-brand-block">
-        <Image
-          className="footer-brand"
-          src="/images/footer/brand.svg"
-          alt="That Josh Guy"
-          width={60}
-          height={60}
-        />
+        <span className="footer-brand-placeholder" aria-hidden="true" />
         <span className="footer-copyright">
           &copy;{new Date().getFullYear()} Onesmus Schngor
         </span>

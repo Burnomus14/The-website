@@ -37,11 +37,8 @@ export default function HomeHero({ environmentLabel, isCollege = false }: {
           </h1>
           <div className="hero-description">
             <span>aka</span>
-            <span className="hero-brand-mark" aria-hidden="true">
-              <Image src="/images/home/hero/brand-light.svg" alt="" width={37} height={25} className="hero-theme-asset hero-theme-asset-light" />
-              <Image src="/images/home/hero/brand-dark.svg" alt="" width={37} height={25} className="hero-theme-asset hero-theme-asset-dark" />
-            </span>
-            <span className="hero-alias">That Josh Guy</span>
+            <span className="hero-brand-placeholder" aria-hidden="true" />
+            <span className="hero-alias">Alias Burnomus14</span>
           </div>
         </div>
         <a href="#about" className="hero-scroll-indicator" aria-label="Scroll to About">

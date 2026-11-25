@@ -1,6 +1,7 @@
 "use client";
 import Footer from '../components/Footer';
 import TopAppBar from "../components/TopAppBar";
+import PayPalSubscriptionButton from "../components/PayPalSubscriptionButton";
 import { Discord, Telegram } from '@thatjoshguy/oneui-icons';
 
 function ContactLink({ href, label, detail, icon: Icon }: { href: string; label: string; detail: string; icon: typeof Discord }) {
@@ -36,8 +37,8 @@ export default function Contact() {
                 <div className="section-header">
                   <h2 className="title">Support my work</h2>
                 </div>
-                <a href="https://www.paypal.com/paypalme/ThatJoshGuy690" className="list" target="_blank" rel="noopener noreferrer" aria-label="Donate via PayPal">
-                  <div className="list-item-icon">
+                <div className="paypal-donation-card">
+                  <div className="list-item-icon" aria-hidden="true">
                     {/* PayPal Heart SVG */}
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd" clipRule="evenodd" d="M10.6505 18.8783C11.4275 19.5403 12.5725 19.5403 13.3505 18.8783C15.1965 17.3053 18.4085 14.4672 19.5385 12.8872C19.6415 12.7413 19.9345 12.3022 19.9345 12.3022C20.3795 11.5352 20.6355 10.6322 20.6355 9.66434C20.6355 6.88124 18.5095 4.62524 15.8855 4.62524C14.2795 4.62524 12.8595 5.47224 12.0005 6.76924C11.1405 5.47224 9.7205 4.62524 8.1135 4.62524C5.4905 4.62524 3.3645 6.88124 3.3645 9.66434C3.3645 10.6322 3.6225 11.5352 4.0665 12.3022C4.0665 12.3022 4.3585 12.7413 4.4625 12.8872C5.5915 14.4672 8.8035 17.3053 10.6505 18.8783Z" fill="var(--accent)"/>
@@ -45,15 +46,9 @@ export default function Contact() {
                   </div>
                   <div className="list-item-content">
                     <div className="body-text">Donate</div>
+                    <PayPalSubscriptionButton />
                   </div>
-                  <div className="list-item-chevron">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g id="Shape">
-                        <path id="Vector 3" d="M8.80005 20L15.3858 13.4142C16.1669 12.6332 16.1669 11.3668 15.3858 10.5858L8.80005 4" stroke="#ACACB1" strokeWidth="2" strokeLinecap="round"/>
-                      </g>
-                    </svg>
-                  </div>
-                </a>
+                </div>
               </div>
               <div className="section">
                 <div className="section-header">

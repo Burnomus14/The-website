@@ -430,6 +430,7 @@ function ProjectCard({ project, twidgetStoreButtonsEnabled = false }: {
   twidgetStoreButtonsEnabled?: boolean;
 }) {
   const showStoreButtons = twidgetStoreButtonsEnabled && project.title.toLowerCase() === 'twidget';
+  const panelClassName = `project-app-card-panel${project.tags?.length ? " project-app-card-panel--with-tags" : ""}${project.links?.length ? " project-app-card-panel--with-links" : ""}`;
   const [copied, setCopied] = useState(false);
   const actionLabel =
     project.action === "copy-current-url"
@@ -521,7 +522,7 @@ function ProjectCard({ project, twidgetStoreButtonsEnabled = false }: {
           />
         </div>
         {bodyLink}
-        <div className="project-app-card-panel">
+        <div className={panelClassName}>
           <span className="project-app-card-progressive-blur" aria-hidden="true" />
           {project.icon && (
             <Image
@@ -536,8 +537,39 @@ function ProjectCard({ project, twidgetStoreButtonsEnabled = false }: {
           <div className="project-app-card-copy">
             <h3 className="project-app-card-title">{project.title}</h3>
             <p className="project-app-card-description">{project.description}</p>
+            {project.tags?.length ? (
+              <ul className="project-app-card-tags" aria-label={`${project.title} categories`}>
+                {project.tags.map((tag, index) => (
+                  <li className="project-app-card-tag" key={`${tag}-${index}`}>{tag}</li>
+                ))}
+              </ul>
+            ) : null}
           </div>
-          {showStoreButtons ? (
+          {project.links?.length ? (
+            <div className="project-app-card-link-actions">
+              {project.links.map((link) => link.url.startsWith("/") ? (
+                <Link
+                  key={`${link.label}-${link.url}`}
+                  href={link.url}
+                  className={`project-app-card-link-action${link.primary ? " is-primary" : ""}`}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={`${link.label}-${link.url}`}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`project-app-card-link-action${link.primary ? " is-primary" : ""}`}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : showStoreButtons ? (
             <div className="project-app-card-actions">
               <a
                 href="https://play.google.com/store/apps/details?id=com.tjg.twidget"

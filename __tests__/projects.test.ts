@@ -43,6 +43,34 @@ it('supports the previous url/tag fields and supplies presentation defaults', as
   }]);
 });
 
+it('parses project tags and labeled links while rejecting unsafe link data', async () => {
+  const project = {
+    title: 'Audio project',
+    thumbnail: '/audio.png',
+    description: 'Audio presets',
+    bodyUrl: 'https://github.com/example/audio',
+    actionUrl: '',
+    tags: ['Audio', 'EQ'],
+    links: [{ label: 'Download', url: 'https://example.com/download', primary: true }],
+  };
+  read.mockResolvedValue([
+    project,
+    { ...project, title: 'Unsafe link', links: [{ label: 'Download', url: 'javascript:alert(1)' }] },
+    { ...project, title: 'Malformed tags', tags: 'Audio' },
+  ]);
+  expect(await getProjects()).toEqual([{
+    title: 'Audio project',
+    thumbnail: '/audio.png',
+    description: 'Audio presets',
+    tags: ['Audio', 'EQ'],
+    links: [{ label: 'Download', url: 'https://example.com/download', primary: true }],
+    bodyUrl: 'https://github.com/example/audio',
+    tone: 'dark',
+    action: 'link',
+    actionIcon: 'open',
+  }]);
+});
+
 it('skips malformed cards and unsafe links without losing valid cards', async () => {
   read.mockResolvedValue([
     null, { ...DEFAULT_PROJECTS[0], thumbnail: 'javascript:alert(1)' },
