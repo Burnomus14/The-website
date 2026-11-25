@@ -37,7 +37,7 @@ export default function Footer() {
           height={60}
         />
         <span className="footer-copyright">
-          &copy;{new Date().getFullYear()} Josh Skinner
+          &copy;{new Date().getFullYear()} Onesmus Schngor
         </span>
       </div>
 

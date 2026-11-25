@@ -87,7 +87,7 @@ function Disclaimer() {
         I confirm that the following website and associated work within is all my own work and does not include any work completed by anyone else other than myself.
       </p>
       <p style={{ margin: 0, fontWeight: 600, color: 'var(--primary)' }}>
-        Josh Skinner<br />
+        Onesmus Schngor<br />
         <a href="mailto:10694305@student.bpc.ac.uk" style={{ color: 'var(--accent-link)', textDecoration: 'none' }}>
           10694305@student.bpc.ac.uk
         </a>

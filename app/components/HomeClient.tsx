@@ -671,7 +671,7 @@ export default function HomeClient({
         <div className="about-copy">
           <h2 className="about-headline">Hey,</h2>
           <p className="about-text">
-            I&apos;m Josh, a designer, journalist and lifelong Samsung enthusiast based in the south of the UK. I follow everything Samsung, from their software updates, UX design, to even hardware leaks.
+            I&apos;m Onesmus Schngor, a designer, journalist and lifelong Samsung enthusiast based in the south of the UK. I follow everything Samsung, from their software updates, UX design, to even hardware leaks.
           </p>
           <p className="about-text">
             I work with <a href="https://sammyguru.com/author/josh_skinner/" target="_blank" rel="noopener noreferrer">SammyGuru</a>, and contribute to publications like <a href="https://9to5google.com/" target="_blank" rel="noopener noreferrer">9to5Google</a>, <a href="https://www.sammobile.com/" target="_blank" rel="noopener noreferrer">SamMobile</a> and <a href="https://www.androidauthority.com/" target="_blank" rel="noopener noreferrer">Android Authority</a>.
@@ -694,7 +694,7 @@ export default function HomeClient({
           <figure className="about-portrait">
             <Image
               src="/images/home/about/london.jpg"
-              alt="Josh Skinner beside the River Thames in London, with Tower Bridge behind him"
+              alt="Onesmus Schngor beside the River Thames in London, with Tower Bridge behind him"
               fill
               sizes="(max-width: 699px) calc(100vw - 40px), 414px"
               className="about-portrait-image"
@@ -705,7 +705,7 @@ export default function HomeClient({
             </figcaption>
           </figure>
 
-          <ul className="list-group home-facts-list" aria-label="A few facts about Josh">
+          <ul className="list-group home-facts-list" aria-label="A few facts about Onesmus Schngor">
             {profileFacts.map((fact) => (
               <li className="list home-fact-item" key={fact.icon}>
                 <span className={`home-fact-icon home-fact-icon-${fact.icon}`} aria-hidden="true">

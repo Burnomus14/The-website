@@ -33,7 +33,7 @@ export default function HomeHero({ environmentLabel, isCollege = false }: {
           )}
           <span className="hero-subtitle">Hey, I&apos;m</span>
           <h1 className="hero-name">
-            <AnimatedText text="Josh Skinner" className="hero-name-entrance" inverse />
+            <AnimatedText text="Onesmus Schngor" className="hero-name-entrance" inverse />
           </h1>
           <div className="hero-description">
             <span>aka</span>

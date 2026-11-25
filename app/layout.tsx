@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const favicon = site.environment === 'production' ? '/favicon.ico' : `/favicon-${site.environment}.ico`;
   const title = isCollege ? 'College Portfolio | That Josh Guy' : 'That Josh Guy';
   const description = isCollege
-    ? 'Josh Skinner’s college portfolio, featuring game development projects, process work, and development blogs.'
+    ? 'Onesmus Schngor’s college portfolio, featuring game development projects, process work, and development blogs.'
     : 'Designer, tech journalist, and Samsung/Android creator — explore my work, articles, and design projects.';
 
   return {
@@ -35,8 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: !site.indexable ? { index: false, follow: true } : undefined,
     title,
     description,
-    keywords: 'Josh Skinner, That Josh Guy, UI/UX Designer, Graphic Designer, Web Developer, Writer, Portfolio, Freelance, Creative',
-    authors: [{ name: 'Josh Skinner' }],
+    keywords: 'Onesmus Schngor, That Josh Guy, UI/UX Designer, Graphic Designer, Web Developer, Writer, Portfolio, Freelance, Creative',
+    authors: [{ name: 'Onesmus Schngor' }],
     openGraph: {
       type: 'website',
       url: siteUrl,

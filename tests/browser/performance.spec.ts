@@ -7,7 +7,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
     // Keep Next's inline stream-reveal scripts, but block application hydration.
     await page.route(/\/_next\/.*\.js/, route => route.abort());
     await page.goto(baseURL + '/');
-    await expect(page.locator('.hero-name')).toContainText('Josh');
+    await expect(page.locator('.hero-name')).toContainText('Onesmus Schngor');
     await expect(page.locator('.hero-name')).toHaveCSS('opacity', '1');
     await expect(page.locator('.hero-intro')).toHaveCSS('filter', 'none');
     await expect(page.locator('.hero-name')).toBeInViewport();

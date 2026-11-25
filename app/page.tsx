@@ -30,7 +30,7 @@ export default async function Home() {
         <div className="main-content">
           <TopAppBar mobileSettingsHref="/settings?from=%2F" />
           <HomeHero environmentLabel={environmentLabel} isCollege={site.edition === "college"} />
-          <Suspense fallback={<div className="home-content-loading" role="status">Loading more about Josh…</div>}>
+          <Suspense fallback={<div className="home-content-loading" role="status">Loading more about Onesmus Schngor…</div>}>
             <HomeSections />
           </Suspense>
         </div>
@@ -67,5 +67,5 @@ async function HomeSections() {
 
 export async function generateMetadata() {
   const college = await getSiteEdition() === 'college';
-  return routeMetadata('/', college ? 'College Portfolio' : 'That Josh Guy', college ? 'Josh Skinner’s college portfolio and development journals.' : 'Designer, tech journalist and Samsung/Android creator. Explore my articles and design projects.');
+  return routeMetadata('/', college ? 'College Portfolio' : 'That Josh Guy', college ? 'Onesmus Schngor’s college portfolio and development journals.' : 'Designer, tech journalist and Samsung/Android creator. Explore my articles and design projects.');
 }
