@@ -23,7 +23,7 @@
     "@flags-sdk/vercel": "^1.5.1",
     "@lisse/react": "^0.7.2",
     "@sanity/client": "^8.9.0",
-    "@sanity/image-url": "^2.1.1",
+    "@sanity/image-url": "^2.2.0",
     "@sanity/webhook": "^4.0.4",
     "@thatjoshguy/oneui-icons": "^1.1.1",
     "@vercel/analytics": "^2.0.1",
