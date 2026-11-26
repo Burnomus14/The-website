@@ -14,6 +14,7 @@ import { portableTextToPlainText, stripHtmlAndDecode } from "../../../../lib/por
 import TopAppBar from "../../../components/TopAppBar";
 import PostSearchBar from "../../PostSearchBar";
 import PostActions from "../../PostActions";
+import { areShopAndBlogAvailable } from "../../../../lib/shopBlogAvailability";
 
 export const revalidate = 300;
 
@@ -24,6 +25,10 @@ interface PageProps {
 const getContentForSlug = cache(async (slug: string): Promise<BlogPost | null> => fetchBlogPostBySlug(slug));
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  if (!areShopAndBlogAvailable()) {
+    return { title: "Not Found", robots: { index: false, follow: false } };
+  }
+
   const { slug, section } = await props.params;
   const content = await getContentForSlug(slug);
   if (!content) notFound();
@@ -35,6 +40,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function SectionPage(props: PageProps) {
+  if (!areShopAndBlogAvailable()) notFound();
+
   const { slug, section } = await props.params;
   const content = await getContentForSlug(slug);
   if (!content) notFound();

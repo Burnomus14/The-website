@@ -34,6 +34,7 @@ interface NavigationClientProps {
   hideMobile?: boolean;
   hideDesktop?: boolean;
   showBlog?: boolean;
+  shopAndBlogAvailable?: boolean;
 }
 
 const MOBILE_NAV_TRANSITION_KEY = 'mobile-nav-transition';
@@ -149,7 +150,8 @@ function DesktopNavButton({
 export default function NavigationClient({
   hideMobile = false,
   hideDesktop = false,
-  showBlog: propShowBlog = false
+  showBlog: propShowBlog = false,
+  shopAndBlogAvailable = true,
 }: NavigationClientProps) {
   const pathname = usePathname();
   useEffect(() => {
@@ -348,13 +350,13 @@ export default function NavigationClient({
       matchesPath: pathname === '/',
       icon: (selected: boolean) => <HomeIcon selected={selected} />,
     },
-    {
+    ...(shopAndBlogAvailable ? [{
       href: '/shop',
       label: 'Shop',
       matchesPath: pathname === '/shop',
       icon: (selected: boolean) => <ShopIcon selected={selected} />,
-    },
-    ...(showBlog ? [{
+    }] : []),
+    ...(shopAndBlogAvailable && showBlog ? [{
       href: '/blog',
       label: 'Blog',
       matchesPath: pathname === '/blog' || pathname?.startsWith('/blog/'),
@@ -366,7 +368,7 @@ export default function NavigationClient({
       matchesPath: pathname === '/contact',
       icon: (selected: boolean) => <ContactIcon selected={selected} />,
     },
-  ], [pathname, showBlog]);
+  ], [pathname, showBlog, shopAndBlogAvailable]);
   const activeDesktopNavIndex = desktopNavItems.findIndex((item) => item.matchesPath);
   const displayedDesktopNavIndex = optimisticDesktopNavIndex ?? activeDesktopNavIndex;
   const desktopNavCount = desktopNavItems.length;
@@ -535,13 +537,13 @@ export default function NavigationClient({
       matchesPath: pathname === '/',
       icon: (selected: boolean) => <HomeIcon selected={selected} />,
     },
-    {
+    ...(shopAndBlogAvailable ? [{
       href: '/shop',
       label: 'Shop',
       matchesPath: pathname === '/shop',
       icon: (selected: boolean) => <ShopIcon selected={selected} />,
-    },
-    ...(showBlog ? [{
+    }] : []),
+    ...(shopAndBlogAvailable && showBlog ? [{
       href: '/blog',
       label: 'Blog',
       matchesPath: pathname === '/blog' || pathname?.startsWith('/blog/'),
@@ -553,7 +555,7 @@ export default function NavigationClient({
       matchesPath: pathname === '/contact',
       icon: (selected: boolean) => <ContactIcon selected={selected} />,
     },
-  ], [pathname, showBlog]);
+  ], [pathname, showBlog, shopAndBlogAvailable]);
   const activeMobileNavIndex = mobileNavItems.findIndex((item) => item.matchesPath);
   const displayedMobileNavIndex = optimisticMobileNavIndex
     ?? (activeMobileNavIndex >= 0

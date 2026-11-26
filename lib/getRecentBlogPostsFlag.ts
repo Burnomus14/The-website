@@ -1,9 +1,13 @@
+import { areShopAndBlogAvailable } from './shopBlogAvailability';
+
 /**
  * Gets the recent-blog-posts-enabled flag value.
  * Checks for a local developer override cookie (ff-recent-blog-posts-enabled) first.
  * Uses Vercel Flags when FLAGS env var is set, otherwise falls back to true.
  */
 export async function getRecentBlogPostsEnabled(): Promise<boolean> {
+  if (!areShopAndBlogAvailable()) return false;
+
   try {
     const { cookies } = await import('next/headers');
     const cookieStore = await cookies();

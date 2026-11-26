@@ -1,3 +1,5 @@
+import { areShopAndBlogAvailable } from './shopBlogAvailability';
+
 /**
  * Gets the blog-enabled flag value.
  * Checks for a local developer override cookie (ff-blog-enabled) first.
@@ -5,6 +7,8 @@
  * This allows the app to build and run before Vercel Flags is configured.
  */
 export async function getBlogEnabled(): Promise<boolean> {
+  if (!areShopAndBlogAvailable()) return false;
+
   try {
     const { cookies } = await import('next/headers');
     const cookieStore = await cookies();
