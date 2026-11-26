@@ -58,12 +58,12 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!content) notFound();
 
   try {
-    const titleText = stripHtmlAndDecode(content.title?.rendered) || "That Josh Guy";
+    const titleText = stripHtmlAndDecode(content.title?.rendered) || "Onesmus Schngor";
     const seoTitle = stripHtmlAndDecode(content.seo?.title) || titleText;
     const excerptText = stripHtmlAndDecode(content.excerpt?.rendered);
     const fallbackDescription = getRenderableText(content);
     const description = truncate(
-      stripHtmlAndDecode(content.seo?.description) || excerptText || fallbackDescription || "Explore the latest stories from That Josh Guy.",
+      stripHtmlAndDecode(content.seo?.description) || excerptText || fallbackDescription || "Explore the latest stories from Onesmus Schngor.",
     );
 
     let featuredImageUrl: string | null = content.seo?.openGraphImageUrl || content.featuredImageUrl;
@@ -81,11 +81,11 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const canonical = canonicalContentHref(content.seo?.canonicalUrl || "") || `${siteUrl}/blog/${slug}`;
 
     return {
-      title: `${seoTitle} | That Josh Guy`,
+      title: `${seoTitle} | Onesmus Schngor`,
       description,
       robots: content.seo?.noIndex || !site.indexable ? { index: false, follow: false } : undefined,
       openGraph: {
-        title: `${seoTitle} | That Josh Guy`,
+        title: `${seoTitle} | Onesmus Schngor`,
         description,
         type: "article",
         url: canonical,
@@ -100,7 +100,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
-        title: `${seoTitle} | That Josh Guy`,
+        title: `${seoTitle} | Onesmus Schngor`,
         description,
         images: featuredImageUrl ? [featuredImageUrl] : undefined,
       },
@@ -111,8 +111,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: "Blog Post | That Josh Guy",
-      description: "Explore the latest stories from That Josh Guy.",
+      title: "Blog Post | Onesmus Schngor",
+      description: "Explore the latest stories from Onesmus Schngor.",
     };
   }
 }

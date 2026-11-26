@@ -36,7 +36,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   const matched = extractPostSections(content).find(s => s.slug === section);
   if (!matched) notFound();
-  const postTitle = stripHtmlAndDecode(content.title?.rendered) || 'That Josh Guy';
+  const postTitle = stripHtmlAndDecode(content.title?.rendered) || 'Onesmus Schngor';
   return routeMetadata(`/blog/${slug}/${section}`, `${matched.title} - ${postTitle}`, `${matched.title} section of ${postTitle}.`, Boolean(content.seo?.noIndex));
 }
 

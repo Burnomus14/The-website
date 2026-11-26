@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = site.canonicalOrigin;
   const isCollege = site.edition === 'college';
   const favicon = getPublicImageUrl(site.environment === 'production' ? '/favicon.ico' : `/favicon-${site.environment}.ico`);
-  const title = isCollege ? 'College Portfolio | That Josh Guy' : 'That Josh Guy';
+  const title = isCollege ? 'College Portfolio | Onesmus Schngor' : 'Onesmus Schngor';
   const description = isCollege
     ? 'Onesmus Schngor’s college portfolio, featuring game development projects, process work, and development blogs.'
     : 'Designer, tech journalist, and Samsung/Android creator — explore my work, articles, and design projects.';
@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: getPublicImageUrl('/images/preview.png'),
           width: 1200,
           height: 630,
-          alt: 'That Josh Guy Portfolio Preview'
+          alt: 'Onesmus Schngor Portfolio Preview'
         }
       ]
     },

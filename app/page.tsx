@@ -65,5 +65,5 @@ async function HomeSections() {
 
 export async function generateMetadata() {
   const college = await getSiteEdition() === 'college';
-  return routeMetadata('/', college ? 'College Portfolio' : 'That Josh Guy', college ? 'Onesmus Schngor’s college portfolio and development journals.' : 'Designer, tech journalist and Samsung/Android creator. Explore my articles and design projects.');
+  return routeMetadata('/', college ? 'College Portfolio' : 'Onesmus Schngor', college ? 'Onesmus Schngor’s college portfolio and development journals.' : 'Designer, tech journalist and Samsung/Android creator. Explore my articles and design projects.');
 }

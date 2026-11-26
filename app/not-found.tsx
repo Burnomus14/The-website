@@ -4,7 +4,7 @@ import { Error as ErrorIcon, Home } from '@thatjoshguy/oneui-icons';
 import styles from './not-found.module.css';
 
 export const metadata: Metadata = {
-  title: 'Page not found | That Josh Guy',
+  title: 'Page not found | Onesmus Schngor',
   description: 'The page you were looking for could not be found.',
 };
 
