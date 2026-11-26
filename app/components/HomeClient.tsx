@@ -450,7 +450,7 @@ function ProjectCard({ project, twidgetStoreButtonsEnabled = false }: {
     />
   );
 
-  const action = project.action === "copy-current-url" ? (
+  const action = project.action === "none" ? null : project.action === "copy-current-url" ? (
     <button
       type="button"
       className={`project-app-card-action${copied ? " is-copied" : ""}`}
@@ -475,7 +475,7 @@ function ProjectCard({ project, twidgetStoreButtonsEnabled = false }: {
     >
       {actionIcon}
     </Link>
-  ) : (
+  ) : project.actionUrl ? (
     <a
       href={project.actionUrl}
       target="_blank"
@@ -487,7 +487,7 @@ function ProjectCard({ project, twidgetStoreButtonsEnabled = false }: {
     >
       {actionIcon}
     </a>
-  );
+  ) : null;
 
   const bodyLink = project.bodyUrl?.startsWith("/") ? (
     <Link
@@ -634,7 +634,7 @@ export default function HomeClient({
   popularStoriesEnabled = true,
   projectsEnabled = true,
   twidgetStoreButtonsEnabled = false,
-  miscSectionEnabled = true,
+  miscSectionEnabled = false,
   recentBlogPostsEnabled = true,
   recentBlogPosts = [],
   profileFacts,

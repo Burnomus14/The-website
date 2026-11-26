@@ -16,6 +16,7 @@ uploaded public images. The Cloudinary API key and secret are only needed for
 uploads and must not be added to Render.
 
 Render provides `RENDER=true` automatically. On Render, the Shop and Blog
-navigation links and routes are disabled, recent blog posts are not fetched,
-and those routes are omitted from the sitemap. They remain available during
+navigation links remain visible, but their pages show an under-development
+message; blog content and recent posts are not fetched, and those routes are
+omitted from the sitemap. Full Shop and Blog pages remain available during
 local development and on non-Render deployments.

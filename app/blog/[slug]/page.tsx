@@ -20,6 +20,7 @@ import { getDisplayWordCount, processContentWithEmbeds } from "../../../lib/blog
 import { portableTextToPlainText, stripHtmlAndDecode } from "../../../lib/portableText";
 import { getSiteContext } from "../../../lib/siteEdition";
 import { areShopAndBlogAvailable } from "../../../lib/shopBlogAvailability";
+import UnderDevelopment from "../../components/UnderDevelopment";
 
 // Access is hostname-dependent, so direct post requests must never reuse static
 // output generated for a different site edition.
@@ -49,7 +50,11 @@ function getRenderableText(post: BlogPost): string {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!areShopAndBlogAvailable()) {
-    return { title: "Not Found", robots: { index: false, follow: false } };
+    return {
+      title: "Blog under development | That Josh Guy",
+      description: "The blog is being prepared. Please check back soon.",
+      robots: { index: false, follow: false },
+    };
   }
 
   const { slug } = await props.params;
@@ -117,7 +122,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function BlogPost(props: PageProps) {
-  if (!areShopAndBlogAvailable()) notFound();
+  if (!areShopAndBlogAvailable()) return <UnderDevelopment title="Blog" />;
 
   const { slug } = await props.params;
   const content = await getContentForSlug(slug);

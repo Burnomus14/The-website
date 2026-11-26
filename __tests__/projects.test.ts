@@ -82,6 +82,25 @@ it('skips malformed cards and unsafe links without losing valid cards', async ()
   expect(await getProjects()).toEqual([DEFAULT_PROJECTS[3]]);
 });
 
+it('clears the This website preview links until a preview URL is supplied', async () => {
+  read.mockResolvedValue([{
+    ...DEFAULT_PROJECTS[3],
+    action: 'copy-current-url',
+    bodyUrl: 'https://example.com',
+    actionUrl: 'https://example.com/preview',
+    links: [{ label: 'Preview', url: 'https://example.com/preview', primary: true }],
+  }]);
+
+  expect(await getProjects()).toEqual([{
+    title: DEFAULT_PROJECTS[3].title,
+    thumbnail: DEFAULT_PROJECTS[3].thumbnail,
+    description: DEFAULT_PROJECTS[3].description,
+    tone: DEFAULT_PROJECTS[3].tone,
+    action: 'none',
+    actionIcon: 'link',
+  }]);
+});
+
 it('uses the offline fallback for absent, unavailable or non-array configuration', async () => {
   delete process.env.EDGE_CONFIG;
   expect(await getProjects()).toEqual(DEFAULT_PROJECTS);

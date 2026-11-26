@@ -196,7 +196,7 @@ export default async function RootLayout({
             <a className="skip-link" href="#main-content" data-no-smooth-corners="">Skip to main content</a>
             <ProgressiveBlur />
             <ProgressiveBlur position="bottom" />
-            <Navigation shopAndBlogAvailable={areShopAndBlogAvailable()} />
+            <Navigation showBlog={!areShopAndBlogAvailable()} />
             <main className="site-main" id="main-content">
               {children}
             </main>

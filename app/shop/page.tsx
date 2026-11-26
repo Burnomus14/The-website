@@ -3,11 +3,20 @@ import { ShopContentCard } from "../components/ContentCards";
 import { fetchGumroadProducts } from "../../lib/gumroad-server";
 import TopAppBar from "../components/TopAppBar";
 import { Shopping } from "@thatjoshguy/oneui-icons";
-import { notFound } from "next/navigation";
 import { areShopAndBlogAvailable } from "../../lib/shopBlogAvailability";
+import UnderDevelopment from "../components/UnderDevelopment";
+import type { Metadata } from "next";
+
+export function generateMetadata(): Metadata {
+  const underDevelopment = !areShopAndBlogAvailable();
+  return {
+    title: underDevelopment ? "Shop under development | That Josh Guy" : "Shop | That Josh Guy",
+    robots: underDevelopment ? { index: false, follow: true } : undefined,
+  };
+}
 
 export default async function Shop() {
-  if (!areShopAndBlogAvailable()) notFound();
+  if (!areShopAndBlogAvailable()) return <UnderDevelopment title="Shop" />;
 
   const result = await fetchGumroadProducts().then(products => ({ products, unavailable: false })).catch(() => { console.error('Shop catalogue unavailable'); return { products: [], unavailable: true }; });
   const { products, unavailable } = result;

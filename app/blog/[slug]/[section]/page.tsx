@@ -15,6 +15,7 @@ import TopAppBar from "../../../components/TopAppBar";
 import PostSearchBar from "../../PostSearchBar";
 import PostActions from "../../PostActions";
 import { areShopAndBlogAvailable } from "../../../../lib/shopBlogAvailability";
+import UnderDevelopment from "../../../components/UnderDevelopment";
 
 export const revalidate = 300;
 
@@ -26,7 +27,11 @@ const getContentForSlug = cache(async (slug: string): Promise<BlogPost | null> =
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!areShopAndBlogAvailable()) {
-    return { title: "Not Found", robots: { index: false, follow: false } };
+    return {
+      title: "Blog under development | That Josh Guy",
+      description: "The blog is being prepared. Please check back soon.",
+      robots: { index: false, follow: false },
+    };
   }
 
   const { slug, section } = await props.params;
@@ -40,7 +45,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function SectionPage(props: PageProps) {
-  if (!areShopAndBlogAvailable()) notFound();
+  if (!areShopAndBlogAvailable()) return <UnderDevelopment title="Blog" />;
 
   const { slug, section } = await props.params;
   const content = await getContentForSlug(slug);
