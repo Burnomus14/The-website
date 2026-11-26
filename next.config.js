@@ -21,6 +21,7 @@ const nextConfig = {
   allowedDevOrigins: ['server', '*.local.tjg.gg', '192.168.1.226'],
   outputFileTracingRoot: path.join(__dirname),
   experimental: {
+    agentUpgrade: 'security',
     inlineCss: false,
     // Work around negative dev profiling timestamps (Next.js issue #86060)
     // by keeping React debug info in the RSC stream instead of the WebSocket.
