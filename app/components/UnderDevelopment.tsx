@@ -6,7 +6,6 @@ export default function UnderDevelopment({ title }: { title: string }) {
     <div className={styles.page}>
       <section className={styles.stage} aria-labelledby="under-development-title">
         <div className={styles.hero}>
-          <span className={styles.status}>Under development</span>
           <h1 className={styles.title} id="under-development-title">
             {title} is under development
           </h1>

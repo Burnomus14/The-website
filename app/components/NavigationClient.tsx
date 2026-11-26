@@ -149,7 +149,7 @@ function DesktopNavButton({
 export default function NavigationClient({
   hideMobile = false,
   hideDesktop = false,
-  showBlog: propShowBlog = false,
+  showBlog: propShowBlog = false
 }: NavigationClientProps) {
   const pathname = usePathname();
   useEffect(() => {

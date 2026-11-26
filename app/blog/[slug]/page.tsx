@@ -50,11 +50,7 @@ function getRenderableText(post: BlogPost): string {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!areShopAndBlogAvailable()) {
-    return {
-      title: "Blog under development | That Josh Guy",
-      description: "The blog is being prepared. Please check back soon.",
-      robots: { index: false, follow: false },
-    };
+    return { title: "Blog is under development", robots: { index: false, follow: false } };
   }
 
   const { slug } = await props.params;

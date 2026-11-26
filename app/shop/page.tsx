@@ -5,15 +5,6 @@ import TopAppBar from "../components/TopAppBar";
 import { Shopping } from "@thatjoshguy/oneui-icons";
 import { areShopAndBlogAvailable } from "../../lib/shopBlogAvailability";
 import UnderDevelopment from "../components/UnderDevelopment";
-import type { Metadata } from "next";
-
-export function generateMetadata(): Metadata {
-  const underDevelopment = !areShopAndBlogAvailable();
-  return {
-    title: underDevelopment ? "Shop under development | That Josh Guy" : "Shop | That Josh Guy",
-    robots: underDevelopment ? { index: false, follow: true } : undefined,
-  };
-}
 
 export default async function Shop() {
   if (!areShopAndBlogAvailable()) return <UnderDevelopment title="Shop" />;

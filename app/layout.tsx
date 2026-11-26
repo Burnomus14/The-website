@@ -13,7 +13,6 @@ import type { Metadata } from 'next';
 import { getSiteContext } from '../lib/siteEdition';
 import { Google_Sans_Code } from 'next/font/google';
 import { getPublicImageUrl } from '../lib/cloudinary-assets';
-import { areShopAndBlogAvailable } from '../lib/shopBlogAvailability';
 
 const googleSansCode = Google_Sans_Code({
   subsets: ['latin'],
@@ -196,7 +195,7 @@ export default async function RootLayout({
             <a className="skip-link" href="#main-content" data-no-smooth-corners="">Skip to main content</a>
             <ProgressiveBlur />
             <ProgressiveBlur position="bottom" />
-            <Navigation showBlog={!areShopAndBlogAvailable()} />
+            <Navigation showBlog={process.env.RENDER === 'true'} />
             <main className="site-main" id="main-content">
               {children}
             </main>

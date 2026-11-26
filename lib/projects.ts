@@ -3,7 +3,7 @@ import { createClient } from '@vercel/edge-config';
 import { safeContentHref } from './contentUrls';
 
 export type ProjectTone = "light" | "dark";
-export type ProjectAction = "link" | "copy-current-url" | "none";
+export type ProjectAction = "link" | "copy-current-url";
 export type ProjectActionIcon = "download" | "open" | "link";
 
 export interface ProjectLink {
@@ -96,7 +96,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     thumbnail: "/images/home/projects/twidget-card.png",
     description: "The very thing you’re looking at right now.",
     tone: "light",
-    action: "none",
+    action: "copy-current-url",
     actionIcon: "link",
   },
 ];
@@ -110,12 +110,13 @@ function projectFromConfig(value: unknown): Project | null {
 
   const thumbnail = safeContentHref(item.thumbnail, true);
   if (!thumbnail || thumbnail.startsWith('#')) return null;
+  const isThisWebsite = item.title.trim().toLowerCase() === 'this website';
   const description = item.description ?? item.tag ?? '';
   if (typeof description !== 'string') return null;
   const rawTags = item.tags;
   if (rawTags !== undefined && (!Array.isArray(rawTags) || rawTags.some(tag => typeof tag !== 'string'))) return null;
   const tags = Array.isArray(rawTags) ? rawTags.map(tag => tag.trim()).filter(Boolean) : [];
-  const rawLinks = item.links;
+  const rawLinks = isThisWebsite ? [] : item.links;
   if (rawLinks !== undefined && !Array.isArray(rawLinks)) return null;
   const links: ProjectLink[] = [];
   if (Array.isArray(rawLinks)) {
@@ -134,14 +135,14 @@ function projectFromConfig(value: unknown): Project | null {
     }
   }
   const tone = item.tone ?? 'dark';
-  const action = item.action ?? 'link';
-  const actionIcon = item.actionIcon ?? (action === 'copy-current-url' ? 'link' : 'open');
+  const action = isThisWebsite ? 'copy-current-url' : item.action ?? 'link';
+  const actionIcon = isThisWebsite ? 'link' : item.actionIcon ?? (action === 'copy-current-url' ? 'link' : 'open');
   if (tone !== 'light' && tone !== 'dark') return null;
-  if (action !== 'link' && action !== 'copy-current-url' && action !== 'none') return null;
+  if (action !== 'link' && action !== 'copy-current-url') return null;
   if (actionIcon !== 'download' && actionIcon !== 'open' && actionIcon !== 'link') return null;
 
-  const bodyValue = item.bodyUrl ?? item.url;
-  const actionValue = item.actionUrl ?? bodyValue;
+  const bodyValue = isThisWebsite ? undefined : item.bodyUrl ?? item.url;
+  const actionValue = isThisWebsite ? undefined : item.actionUrl ?? bodyValue;
   const bodyUrl = typeof bodyValue === 'string' ? safeContentHref(bodyValue) : '';
   const actionUrl = typeof actionValue === 'string' ? safeContentHref(actionValue) : '';
   if ((typeof bodyValue === 'string' && bodyValue.trim() && !bodyUrl) ||
@@ -159,20 +160,6 @@ function projectFromConfig(value: unknown): Project | null {
   };
 }
 
-function clearThisWebsitePreview(project: Project): Project {
-  if (project.title.trim().toLowerCase() !== 'this website') return project;
-  return {
-    title: project.title,
-    thumbnail: project.thumbnail,
-    description: project.description,
-    ...(project.tags ? { tags: project.tags } : {}),
-    ...(project.icon ? { icon: project.icon } : {}),
-    tone: project.tone,
-    action: 'none',
-    actionIcon: 'link',
-  };
-}
-
 export async function getProjects(): Promise<Project[]> {
   const connectionString = process.env.EDGE_CONFIG;
   if (!connectionString) return DEFAULT_PROJECTS;
@@ -181,10 +168,7 @@ export async function getProjects(): Promise<Project[]> {
     // Do not persist this read in Next's Data Cache: edits must work without a deploy.
     const value = await createClient(connectionString, { cache: 'no-store' }).get('projects');
     if (!Array.isArray(value)) return DEFAULT_PROJECTS;
-    return value
-      .map(projectFromConfig)
-      .filter((project): project is Project => project !== null)
-      .map(clearThisWebsitePreview);
+    return value.map(projectFromConfig).filter((project): project is Project => project !== null);
   } catch {
     return DEFAULT_PROJECTS;
   }

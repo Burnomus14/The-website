@@ -29,14 +29,6 @@
   transform: translateY(6px);
 }
 
-.status {
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .errorIcon {
   display: grid;
   width: 100px;

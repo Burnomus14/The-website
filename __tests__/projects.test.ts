@@ -82,10 +82,10 @@ it('skips malformed cards and unsafe links without losing valid cards', async ()
   expect(await getProjects()).toEqual([DEFAULT_PROJECTS[3]]);
 });
 
-it('clears the This website preview links until a preview URL is supplied', async () => {
+it('keeps the stock This website action but clears its preview links', async () => {
   read.mockResolvedValue([{
     ...DEFAULT_PROJECTS[3],
-    action: 'copy-current-url',
+    action: 'link',
     bodyUrl: 'https://example.com',
     actionUrl: 'https://example.com/preview',
     links: [{ label: 'Preview', url: 'https://example.com/preview', primary: true }],
@@ -96,7 +96,7 @@ it('clears the This website preview links until a preview URL is supplied', asyn
     thumbnail: DEFAULT_PROJECTS[3].thumbnail,
     description: DEFAULT_PROJECTS[3].description,
     tone: DEFAULT_PROJECTS[3].tone,
-    action: 'none',
+    action: 'copy-current-url',
     actionIcon: 'link',
   }]);
 });

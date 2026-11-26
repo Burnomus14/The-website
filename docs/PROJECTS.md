@@ -61,6 +61,5 @@ its Lovable preview. The deployed Edge Config list remains authoritative, so
 apply matching edits to its `projects` key separately. Preserve disabled
 entries when reordering the visible cards.
 
-The **This website** card intentionally has no action or preview link until a
-preview URL is supplied. The application clears links for that card even when
-they remain in the Edge Config entry.
+The This website card keeps the standard copy-link button, but its preview
+links are intentionally blank until a preview URL is supplied.
